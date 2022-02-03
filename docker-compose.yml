@@ -4,27 +4,28 @@ services:
     container_name: php-apache
     image: php:7.4-apache
     build:
+      context: .
       dockerfile: Dockerfile
     depends_on:
       - db
     volumes:
       - ../php:/var/www/html/
     ports:
-      - 8000:80
+      - 80:80
 
   db:
     container_name: db
     image: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
-      MYSQL_DATABASE: aldeias
-      MYSQL_USER: MYSQL_USER
-      MYSQL_PASSWORD: MYSQL_PASSWORD
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user@teste
+      MYSQL_PASSWORD: user_password
     volumes:
       - db-data:/var/lib/mysql
     ports:
       - 9906:3306
 
 volumes:
+  php:
   db-data:
