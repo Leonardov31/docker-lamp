@@ -2,7 +2,7 @@ version: '3.8'
 services:
   php-apache-environment:
     container_name: php-apache
-    image: php:7.4-apache
+    image: php:7.3.33-apache
     build:
       context: .
       dockerfile: Dockerfile
@@ -15,7 +15,7 @@ services:
 
   db:
     container_name: db
-    image: mysql
+    image: mysql:5.7
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
